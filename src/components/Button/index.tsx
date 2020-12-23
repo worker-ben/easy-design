@@ -24,17 +24,27 @@ interface ButtonProps {
   href?: string;
 }
 
+// 类型别名，取出 React 提供的 html 元素属性接口
+type NativeButtonProps = ButtonProps & React.ButtonHTMLAttributes<HTMLElement>;
+type NativeAnchorProps = ButtonProps & React.AnchorHTMLAttributes<HTMLElement>;
+// 这样在外界在传入原生属性的时候，就不会提示不存在了
+// 全部属性设置为「可选」
+type FullButtonProps = Partial<NativeButtonProps & NativeAnchorProps>;
 
 // 填入属性接口，然后就能直接展开使用了
-const Button: React.FC<ButtonProps> = (props) => {
+const Button: React.FC<FullButtonProps> = (props) => {
   const {
     btnType,
     disabled,
     size,
     children,
     href,
+    className,
+    // 其余属性会填充到这
+    ...restProps
   } = props;
 
+  // 动态赋予不同属性的样式
   const classes = cx('btn', {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
@@ -47,6 +57,7 @@ const Button: React.FC<ButtonProps> = (props) => {
       <a
         className={classes}
         href={href}
+        {...restProps} // 展开其它属性
       >
         ❄️🎄{children}🎄❄️
       </a>
@@ -56,6 +67,7 @@ const Button: React.FC<ButtonProps> = (props) => {
       <button
         className={classes}
         disabled={disabled}
+        {...restProps}
       >
         ❄️🎄{children}🎄❄️
       </button>

@@ -7,10 +7,11 @@ import Button from './components/Button';
 function App() {
   return (
     <div className="App">
-      <Button> Default Button </Button>
-      <Button btnType={'primary'}> Primary Button </Button>
-      <Button btnType={'danger'}> Danger Button </Button>
-      <Button btnType={'link'} href={'https://www.baidu.com/'} > Hello Link </Button>
+      {/* 支持原生属性了 */}
+      <Button onClick={()=>{console.log('Default Button')}} > Default Button </Button>
+      <Button onClick={()=>{console.log('Primary Button')}} btnType={'primary'}> Primary Button </Button>
+      <Button onClick={()=>{console.log('Danger Button')}} btnType={'danger'}> Danger Button </Button>
+      <Button  btnType={'link'} href={'https://www.baidu.com/'} target='_blank' > Hello Link </Button>
       <Button disabled > Disabled Button </Button>
     </div>
   );
