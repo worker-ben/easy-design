@@ -1,6 +1,4 @@
 import './App.css';
-import Hello from './components/Hello';
-import ClickButton from './components/Click';
 import Button from './components/Button';
 
 /**
@@ -9,11 +7,11 @@ import Button from './components/Button';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Button> Hello Button </Button>
-        <Button btnType={'link'} href={'https://www.baidu.com/'} > Hello Link </Button>
-        <Button disabled > Disabled Button </Button>
-      </header>
+      <Button> Default Button </Button>
+      <Button btnType={'primary'}> Primary Button </Button>
+      <Button btnType={'danger'}> Danger Button </Button>
+      <Button btnType={'link'} href={'https://www.baidu.com/'} > Hello Link </Button>
+      <Button disabled > Disabled Button </Button>
     </div>
   );
 }

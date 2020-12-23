@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import './index.css';
 
 // 列举的时候，用枚举
 enum ButtonSize {
@@ -37,7 +38,7 @@ const Button: React.FC<ButtonProps> = (props) => {
   const classes = cx('btn', {
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
-    'disabled': (btnType === ButtonType.Link) && disabled// button 本身就有 disabled 属性，不加在类上
+    'disabled': disabled
   })
 
   // 如果 type 是 link，返回 a 标签的东西
